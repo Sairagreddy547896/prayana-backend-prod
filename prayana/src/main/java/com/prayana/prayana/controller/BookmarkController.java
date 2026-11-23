@@ -18,6 +18,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class BookmarkController {
 
+
     private final BookmarkService bookmarkService;
 
 

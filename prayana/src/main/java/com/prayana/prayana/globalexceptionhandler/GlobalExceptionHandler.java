@@ -2,7 +2,9 @@ package com.prayana.prayana.globalexceptionhandler;
 
 import com.prayana.prayana.customexceptions.*;
 import com.prayana.prayana.dto.ErrorResponse;
+import com.prayana.prayana.result.ApiError;
 import io.jsonwebtoken.ExpiredJwtException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -154,6 +156,22 @@ public class GlobalExceptionHandler {
         err.setStatus(HttpStatus.SERVICE_UNAVAILABLE);
 
         return new ResponseEntity<>(err,HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(RefreshTokenException.class)
+    public ResponseEntity<ApiError> handleRefreshTokenException(
+            RefreshTokenException exception
+    ) {
+
+        ApiError error = new ApiError(
+                HttpServletResponse.SC_UNAUTHORIZED,
+                exception.getCode(),
+                exception.getMessage()
+        );
+
+        return ResponseEntity
+                .status(HttpServletResponse.SC_UNAUTHORIZED)
+                .body(error);
     }
 
 }

@@ -8,7 +8,7 @@ public final class GoogleApiConstants {
     public static final String HEADER_FIELD_MASK="X-Goog-FieldMask";
 
     public static final String SEARCH_FIELD_MASK=
-            "places.id,"    +
+                    "places.id,"    +
                     "places.displayName,"   +
                     "places.types," +
                     "places.formattedAddress,"  +

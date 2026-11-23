@@ -23,8 +23,7 @@ public class GooglePlacesClient {
     public JsonNode searchPlaces(String query)  {
 
         String url =
-                properties.getBaseUrl()+
-                        properties.getSearchPath();
+                   properties.getBaseUrl()+ properties.getSearchPath();
         HttpHeaders headers=new org.springframework.http.HttpHeaders();
 
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -49,7 +48,6 @@ public class GooglePlacesClient {
                         request,
                         String.class
                 );
-        System.out.print("here it is " +response.getBody());
         try {
             return objectMapper.readTree(response.getBody());
         }
